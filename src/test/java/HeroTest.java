@@ -34,4 +34,16 @@ public class HeroTest{
     Hero hero = new Hero("Steve", 47, "Having a midlife crisis");
     assertEquals(true, hero.getWeakness() instanceof String);
   }
+
+  @Test
+  public void getAttack_instantiatesCorrectly() {
+    Hero hero = new Hero("Steve", 47, "Having a midlife crisis");
+    assertEquals(true, hero.getAttack() <= 10);
+  }
+
+  @Test
+  public void getDefense_instantiatesCorrectly() {
+    Hero hero = new Hero("Steve", 47, "Having a midlife crisis");
+    assertEquals(true, hero.getDefense() <= 10);
+  }
 }

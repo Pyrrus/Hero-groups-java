@@ -1,6 +1,8 @@
 <h1>$squad.getGroupName()</h1>
 <h2>Dedicated to $squad.getCause()</h2>
 <p>Maximum Number of Members: $squad.getSize()</p>
+<p>Current Squad Power: $squad.getSquadAttack()</p>
+<p>Current Squad Defense: $squad.getSquadDefense()</p>
 #if($post)
   #if($post.equals("yes"))
     <h4>New hero added successfully!</h4>
@@ -12,11 +14,13 @@
   <span>Current Roster:</span>
   <ul>
     #foreach($hero in $squad.getHeroes())
-     <li>$hero.getName()
+     <li><strong>$hero.getName()</strong>
        <ul>
          <li>Age: $hero.getAge()</li>
          <li>Power: $hero.getPower()</li>
          <li>Weakness: $hero.getWeakness()</li>
+         <li>Attack: $hero.getAttack()</li>
+         <li>Defense: $hero.getDefense()</li>
        </ul>
      </li>
     #end

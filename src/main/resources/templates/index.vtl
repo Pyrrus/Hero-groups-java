@@ -2,12 +2,20 @@
 #if($post)
 <h3>Squad added successfully!</h3>
 #end
+#if($winner)
+<h3>$winner.getGroupName() Wins!</h3>
+#end
 #if ($squads)
+<form action="/fight" method="post">
   <ul>
     #foreach ($squad in $squads)
-    <li><a href="squad/$squad.getId()">$squad.getGroupName()</a></li>
+    <li><input type="checkbox" name="fight" value="$squad.getId()"> <a href="squad/$squad.getId()"> $squad.getGroupName() Attack: $squad.getSquadAttack() Defense: $squad.getSquadDefense()</a></li>
     #end
   </ul>
+  #if($squads.size() >= 2)
+    <button type = "submit" class="btn btn-danger">Fight</button>
+  #end
+</form>
 #else
   <p>No Squads</p>
 #end

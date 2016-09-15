@@ -3,6 +3,7 @@ import java.util.Map;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
+import java.util.Arrays;
 
 public class App {
   public static void main(String[] args) {
@@ -23,6 +24,17 @@ public class App {
       String cause = request.queryParams("user-cause");
       Squad newSquad = new Squad(size, name, cause);
       model.put("post", "yes");
+      model.put("squads", Squad.all());
+      model.put("template", "templates/index.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/fight", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String[] fightsquads = request.queryParamsValues("fight");
+
+      Squad winSquad = Squad.fight(Squad.find(Integer.parseInt(fightsquads[0])), Squad.find(Integer.parseInt(fightsquads[1])));
+      model.put("winner", winSquad);
       model.put("squads", Squad.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);

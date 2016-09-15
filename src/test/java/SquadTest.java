@@ -81,6 +81,52 @@ public class SquadTest{
   }
 
   @Test
+  public void getSquadAttack_instantiatesCorrectly () {
+    Squad group = new Squad(2, "C.A.T.S.", "catching and talking to spiders");
+    assertEquals(0, group.getSquadAttack());
+  }
+
+  @Test
+  public void getSquadDefense_instantiatesCorrectly () {
+    Squad group = new Squad(2, "C.A.T.S.", "catching and talking to spiders");
+    assertEquals(0, group.getSquadDefense());
+  }
+
+  @Test
+  public void getSquadAttack_IncreasesWhenHeroAdded () {
+    Squad group = new Squad(2, "C.A.T.S.", "catching and talking to spiders");
+    Hero hero = new Hero("Steve", 47, "Having a midlife crisis");
+    group.addHero(hero);
+    assertEquals(true, group.getSquadAttack() > 0);
+  }
+
+  @Test
+  public void getSquadAttack_DecreasesWhenHeroRemoved () {
+    Squad group = new Squad(2, "C.A.T.S.", "catching and talking to spiders");
+    Hero hero = new Hero("Steve", 47, "Having a midlife crisis");
+    group.addHero(hero);
+    group.removeHero("Steve");
+    assertEquals(0, group.getSquadAttack());
+  }
+
+  @Test
+  public void getSquadDefense_DecreasesWhenHeroRemoved () {
+    Squad group = new Squad(2, "C.A.T.S.", "catching and talking to spiders");
+    Hero hero = new Hero("Steve", 47, "Having a midlife crisis");
+    group.addHero(hero);
+    group.removeHero("Steve");
+    assertEquals(0, group.getSquadDefense());
+  }
+
+  @Test
+  public void getSquadDefense_IncreasesWhenHeroAdded () {
+    Squad group = new Squad(2, "C.A.T.S.", "catching and talking to spiders");
+    Hero hero = new Hero("Steve", 47, "Having a midlife crisis");
+    group.addHero(hero);
+    assertEquals(true, group.getSquadDefense() > 0);
+  }
+
+  @Test
   public void All_returnsAll () {
     Squad group = new Squad(2, "C.A.T.S.", "catching and talking to spiders");
     Squad otherGroup = new Squad(17, "Too Many Heroes", "arguing amongst each other");
@@ -100,5 +146,12 @@ public class SquadTest{
     Squad group = new Squad(2, "C.A.T.S.", "catching and talking to spiders");
     Squad otherGroup = new Squad(17, "Too Many Heroes", "arguing amongst each other");
     assertEquals(Squad.find(otherGroup.getId()), otherGroup);
+  }
+
+  @Test
+  public void fight_returnsSquad () {
+    Squad group = new Squad(2, "C.A.T.S.", "catching and talking to spiders");
+    Squad otherGroup = new Squad(17, "Too Many Heroes", "arguing amongst each other");
+    assertEquals(true, Squad.fight(group, otherGroup) instanceof Squad);
   }
 }

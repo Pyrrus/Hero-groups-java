@@ -1,0 +1,27 @@
+<h1>$squad.getGroupName()</h1>
+<h2>Dedicated to $squad.getCause()</h2>
+<p>Maximum Number of Members: $squad.getSize()</p>
+#if($post)
+  #if($post.equals("yes"))
+    <h4>New hero added successfully!</h4>
+  #else
+    <h4>Sorry, new hero could not be added</h4>
+  #end
+#end
+#if($squad.getHeroes().size() > 0)
+  <span>Current Roster:</span>
+  <ul>
+    #foreach($hero in $squad.getHeroes())
+     <li>$hero.getName()
+       <ul>
+         <li>Age: $hero.getAge()</li>
+         <li>Power: $hero.getPower()</li>
+         <li>Weakness: $hero.getWeakness()</li>
+       </ul>
+     </li>
+    #end
+  </ul>
+#end
+
+<a href="/squad/$squad.getId()/hero/new">Add a new Hero</a><br>
+<a href="/">All Squads</a>

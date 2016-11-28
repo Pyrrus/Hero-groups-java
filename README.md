@@ -1,10 +1,10 @@
-# _Template_
+# _Hero_
 
-#### By _Ewa Manek_
+#### By _Ewa Manek and Adam Gorbahn_
 
 ## Description
 
-_A template java app with support for gradle, spark and junit testing_
+_Make hero game by points_
 
 ## Setup/Installation Requirements
 
@@ -22,4 +22,4 @@ https://github.com/ewajm/javaSparkTemplate
 
 * MIT
 
-Copyright (c) 2016 **_Ewa Manek_**
+Copyright (c) 2016 **_Ewa Manek and Adam Gorbahn_**
